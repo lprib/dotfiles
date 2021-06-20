@@ -1,18 +1,18 @@
  # shortened names of all config files
+alacritty	~/.config/alacritty/alacritty.yml
+aliases	~/.config/zsh/.aliases
+gotop	~/.config/gotop/gotop.conf
 i3	~/.config/i3/config
-xresources	~/.Xresources
-xinitrc	~/.xinitrc
 polybar	~/.config/polybar/config
+ranger	~/.config/ranger/rc.conf
 rofi	~/.config/rofi/config.rasi
 rofitheme	~/.config/rofi/theme.rasi
-zshrc	~/.zshrc
-zprofile	~/.zprofile
-aliases	~/.aliases
-ranger	~/.config/ranger/rc.conf
 vim	~/.config/nvim/init.vim
-xcolors	~/.Xcolors
-alacritty	~/.config/alacritty/alacritty.yml
-gotop	~/.config/gotop/gotop.conf
+xcolors	~/.config/X11/.Xcolors
+xinitrc	~/.config/X11/.xinitrc
+xresources	~/.config/X11/.Xresources
+zprofile	~/.zprofile
+zshrc	~/.config/zsh/.zshrc
 
 # vim: set ts=16:
 

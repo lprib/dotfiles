@@ -10,13 +10,16 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(colored-man-pages zsh-vi-mode zsh-syntax-highlighting)
 
+prev_aliases=$(alias -L) # cache previous aliases
+
 source $ZSH/oh-my-zsh.sh
 # remove all aliases set by oh-my-zsh
 unalias -m "*"
+eval "$prev_aliases" #reinstate previous aliases
 
-HISTFILE=~/.histfile
+HISTFILE=$XDG_DATA_HOME/zsh/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
 
-source .aliases
+source $ZDOTDIR/.aliases
