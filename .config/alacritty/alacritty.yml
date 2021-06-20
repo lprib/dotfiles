@@ -1,0 +1,10 @@
+font:
+    normal:
+        family: Terminus
+        style: Regular
+    bold:
+        family: Terminus
+        style: Bold
+#Italic:
+#family: Terminus
+#style: Regular
