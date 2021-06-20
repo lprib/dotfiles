@@ -23,6 +23,7 @@ generate_shortcuts() {
 	done
 
 	echo "\ }" >> $vim_file
+	echo "Successfully generated shortcuts."
 }
 
 # Argument 1: program to open with
@@ -35,6 +36,7 @@ open_shortcut() {
 			break
 		fi
 	done
+	echo "Shortcut $2 not found"
 }
 
 list_shortcuts() {

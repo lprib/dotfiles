@@ -12,4 +12,5 @@ let g:my_shortcuts = {
 	\ 'vim': '~/.config/nvim/init.vim',
 	\ 'xcolors': '~/.Xcolors',
 	\ 'alacritty': '~/.config/alacritty/alacritty.yml',
+	\ 'gotop': '~/.config/gotop/gotop.conf',
 \ }

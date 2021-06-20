@@ -78,7 +78,7 @@ mode "resize" {
 
    bindsym Return mode "default"
    bindsym Escape mode "default"
-   bindsym$mod+r mode "default"
+   bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -91,8 +91,8 @@ bindsym $mod+p exec spotifyctl playpause
 bindsym $mod+bracketright exec spofiyctl next
 bindsym $mod+bracketleft exec spotifyctl previous
 
-set_from_resource $monitor-left i3wm.monitorLeft None
-set_from_resource $monitor-right i3wm.monitorRight None
+set_from_resource $monitorLeft i3wm.monitorLeft None
+set_from_resource $monitorRight i3wm.monitorRight None
 
 set_from_resource $darkBg i3wm.darkBg None
 set_from_resource $darkText i3wm.darkText None
@@ -124,8 +124,8 @@ for_window [class=".*"] border pixel 1
 
 for_window [class="Spotify"] move to workspace $ws10
 
-bindsym $mod+Control+h move workspace to output $monitor-left
-bindsym $mod+Control+l move workspace to output $monitor-right
+bindsym $mod+Control+h move workspace to output $monitorLeft
+bindsym $mod+Control+l move workspace to output $monitorRight
 
 workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace back_and_forth
