@@ -1,0 +1,7 @@
+*monitorLeft: DVI-I-1
+*monitorRight: HDMI-0
+
+#include ".Xcolors"
+
+! vim: set filetype=xdefaults:
+

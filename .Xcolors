@@ -1,0 +1,18 @@
+*darkBg: #212121
+*darkHighlightedBg: #424242
+*darkText: #9e9e9e
+*darkOutline: #6d6d6d
+
+*lightBg: #bdbdbd
+*lightText: #616161
+*lightOutline: #212121
+
+*redBg: #870000
+*redText: #f9683a
+*redOutline: #bf360c
+
+*errorColor: #bf360c
+*infoColor: #ff8f00
+
+! vim: set filetype=xdefaults:
+

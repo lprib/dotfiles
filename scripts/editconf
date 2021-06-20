@@ -1,0 +1,57 @@
+#!/bin/bash
+usage="Edit or generate shortcutted config files.\n\
+Usage:\n\
+	editconf [options] [shortcut_name]\n\
+Options:\n\
+	-g, --generate          generate shortcuts for other programs\n\
+	-p, --program PROGRAM   open shortcut_name in PROGRAM\n\
+	-l, --list              list available shortcut shortcut names\n\
+	-h, --help              show this help message\n\
+\n\
+With no parameters, open shortcut_name in neovim"
+
+
+
+generate_shortcuts() {
+	vim_file="$HOME/.config/nvim/shortcuts.vim"
+	rm -f $vim_file
+	echo "let g:my_shortcuts = {" > $vim_file
+
+	for shortcut in "${shortcuts_array[@]}"; do
+		read name path <<< "$shortcut"
+		printf "	\\ '%s': '%s',\n" $name $path >> $vim_file
+	done
+
+	echo "\ }" >> $vim_file
+}
+
+# Argument 1: program to open with
+# Argument 2: shortcut name
+open_shortcut() {
+	for shortcut in "${shortcuts_array[@]}"; do
+		read name path <<< "$shortcut"
+		if [[ $name == $2 ]]; then
+			eval "$1 $path"
+			break
+		fi
+	done
+}
+
+list_shortcuts() {
+	for shortcut in "${shortcuts_array[@]}"; do
+		read name path <<< "$shortcut"
+		echo $name
+	done
+}
+
+readarray -t shortcuts_array < <(sed -e "/\(^\s*#\)\|\(^$\)/d" ~/scripts/shortcuts)
+
+case $1 in
+	-g|--generate) generate_shortcuts ;;
+	-p|--program) open_shortcut $2 $3 ;;
+	-h|--help) echo -e "$usage" ;;
+	-l|--list) list_shortcuts ;;
+	*) open_shortcut nvim $1;;
+esac
+
+

@@ -1,0 +1,102 @@
+[common]
+font-0 = Terminus:size=14;2
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=8:1"
+height = 16
+module-margin = 1
+padding= 0
+spacing = 0
+background = ${xrdb:polybar.darkBg}
+foreground = ${xrdb:polybar.darkText}
+enable-ipc = true
+scroll-up = "#i3.prev"
+scroll-down = "#i3.next"
+
+
+[bar/leftbar]
+inherit = common
+monitor = ${xrdb:polybar.monitorLeft:}
+modules-left = i3
+
+
+[bar/rightbar]
+inherit = common
+monitor = ${xrdb:polybar.monitorRight:}
+modules-left = i3
+modules-center = spotify previous playpause next
+modules-right = date
+
+
+[module/date]
+type = internal/date
+date = %e %b %I:%M:%S
+
+
+[module/i3]
+type= internal/i3
+pin-workspaces = true
+
+label-mode = %mode%
+label-focused = %name%
+label-visible = %name%
+label-occupied = %name%
+label-empty = %name%
+label-urgent = %name%
+
+label-padding = 1
+
+label-mode-background = ${xrdb:polybar.redBg}
+label-mode-foreground = ${xrdb:polybar.redText}
+label-mode-padding = ${self.label-padding}
+
+label-focused-background = ${xrdb:polybar.lightBg}
+label-focused-foreground = ${xrdb:polybar.lightText}
+label-focused-padding = ${self.label-padding}
+
+label-unfocused-background = ${xrdb:polybar.darkBg}
+label-unfocused-foreground = ${xrdb:polybar.darkText}
+label-unfocused-padding = ${self.label-padding}
+
+label-visible-background = ${xrdb:polybar.darkHighlightedBg}
+label-visible-foreground = ${xrdb:polybar.darkText}
+label-visible-underline = ${xrdb:polybar.darkOutline}
+label-visible-padding = ${self.label-padding}
+
+
+[module/previous]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo -e "\uf04a"
+click-left = "spotifyctl -q previous"
+
+
+[module/next]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo -e "\uf04e"
+click-left = "spotifyctl -q next"
+
+
+[module/playpause]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo -e "\uf04c"
+; Paused
+hook-2 = echo -e "\uf04b"
+click-left = "spotifyctl -q playpause"
+
+
+[module/spotify]
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; Playing/paused show song name and artist
+hook-1 = "spotifyctl -q status --format '%artist%: %title%' --max-artist-length 30 --max-title-length 30"

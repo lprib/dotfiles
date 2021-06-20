@@ -1,0 +1,7 @@
+#!/bin/bash
+
+Choice=$(echo -e "Logout\nShutdown\nReboot\nCancel" | rofi -dmenu -p "Power options")
+[ "$Choice" == "Logout" ] && i3-msg exit
+[ "$Choice" == "Shutdown" ] && shutdown now
+[ "$Choice" == "Reboot" ] && reboot
+
