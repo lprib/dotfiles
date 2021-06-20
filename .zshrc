@@ -1,24 +1,18 @@
-bindkey -v
+setopt autocd extendedglob nomatch noflowcontrol notify completeinword interactivecomments 
 
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle ':completion:*' completions 1
-zstyle ':completion:*' glob 1
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
-zstyle ':completion:*' max-errors 1
-zstyle ':completion:*' menu yes select
-zstyle ':completion:*' substitute 1
-bindkey '^[[Z' reverse-menu-complete
-zstyle :compinstall filename '/home/liam/.zshrc'
+export ZSH="/home/liam/.oh-my-zsh"
 
-autoload -Uz compinit
-compinit
+ZSH_THEME="robbyrussell"
+HYPHEN_INSENSITIVE="true"
+HIST_STAMPS="yyyy-mm-dd"
+
+plugins=(colored-man-pages zsh-vi-mode zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt autocd extendedglob nomatch
 
-source $HOME/packages/common-zsh-prompt/common.zsh-theme
 
 source .aliases

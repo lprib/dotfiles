@@ -1,0 +1,9 @@
+#!/bin/bash
+
+colors=(darkBg darkSubtleHighlightedBg darkHighlightedBg darkText darkOutline lightBg lightText lightOutline)
+
+for color in "${colors[@]}"; do
+	export $color=$(xgetres $color)
+done
+
+rofi $@

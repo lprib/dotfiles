@@ -114,7 +114,7 @@ client.urgent $redBg $redBg $redText $redBg
 client.placeholder $darkOutline $darkBg $darkText $darkOutline
 client.background $darkBg
 
-bindsym $mod+d exec --no-startup-id "rofi -show run"
+bindsym $mod+d exec --no-startup-id "start-rofi -show run"
 
 bindsym $mod+Shift+e exec exit-i3
 

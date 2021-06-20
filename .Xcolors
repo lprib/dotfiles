@@ -1,10 +1,11 @@
-*darkBg: #212121
-*darkHighlightedBg: #424242
-*darkText: #9e9e9e
-*darkOutline: #6d6d6d
+*darkBg: #1d2021
+*darkHighlightedBg: #464f52
+*darkSubtleHighlightedBg: #282d2e
+*darkText: #d4be98
+*darkOutline: #282d2e
 
-*lightBg: #bdbdbd
-*lightText: #616161
+*lightBg: #d4be98
+*lightText: #1d2021
 *lightOutline: #212121
 
 *redBg: #870000

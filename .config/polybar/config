@@ -1,6 +1,6 @@
 [common]
 font-0 = Terminus:size=14;2
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=8:1"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=8:1;2"
 height = 16
 module-margin = 1
 padding= 0
@@ -22,8 +22,7 @@ modules-left = i3
 inherit = common
 monitor = ${xrdb:polybar.monitorRight:}
 modules-left = i3
-modules-center = spotify previous playpause next
-modules-right = date
+modules-right = spotify previous playpause next date
 
 
 [module/date]
@@ -37,6 +36,7 @@ pin-workspaces = true
 
 label-mode = %mode%
 label-focused = %name%
+label-unfocused = %name%
 label-visible = %name%
 label-occupied = %name%
 label-empty = %name%

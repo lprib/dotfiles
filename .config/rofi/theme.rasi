@@ -1,14 +1,16 @@
 * {
-  background-color: #1a1a1a;
-  border-color: #1f1f1f;
-  text-color: #999999;
+  background-color: ${darkBg};
+  border-color: ${darkBg};
+  text-color: ${darkText};
   spacing: 0;
-  width: 1000px;
+  width: 500px;
+  font: "Terminus 14";
 }
 
 window {
   border : 1;
-  border-color: #4e5461;
+  border-color: ${darkOutline};
+  padding: 20px;
 }
 
 inputbar {
@@ -17,19 +19,19 @@ inputbar {
 }
 
 prompt {
-  padding: 16px;
+  padding: 1px 10px 1px 1px;
   border: 0 1px 0 0;
 }
 
 textbox {
-  background-color: #2e343f;
+  background-color: ${darkBg};
   border: 0 0 1px 0;
-  border-color: #adadad;
-  padding: 8px 16px;
+  border-color: ${darkBg};
+  padding: 1px;
 }
 
 entry {
-  padding: 16px;
+  padding: 1px;
 }
 
 listview {
@@ -40,10 +42,10 @@ listview {
 
 element {
   border: 0 0 1px 0;
-  padding: 16px;
+  padding: 1px;
 }
 
 element selected {
-  background-color: #1f1f1f;
+  background-color: ${darkSubtleHighlightedBg};
 }
 
