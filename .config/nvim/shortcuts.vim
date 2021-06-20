@@ -1,6 +1,6 @@
 let g:my_shortcuts = {
 	\ 'alacritty': '~/.config/alacritty/alacritty.yml',
-	\ 'aliases': '~/.aliases',
+	\ 'aliases': '~/.config/zsh/.aliases',
 	\ 'gotop': '~/.config/gotop/gotop.conf',
 	\ 'i3': '~/.config/i3/config',
 	\ 'polybar': '~/.config/polybar/config',
@@ -9,8 +9,8 @@ let g:my_shortcuts = {
 	\ 'rofitheme': '~/.config/rofi/theme.rasi',
 	\ 'vim': '~/.config/nvim/init.vim',
 	\ 'xcolors': '~/.config/X11/.Xcolors',
-	\ 'xinitrc': '~/.config/X11/.xinitrc',
+	\ 'xinitrc': '~/.xinitrc',
 	\ 'xresources': '~/.config/X11/.Xresources',
-	\ 'zprofile': '~/.zprofile',
+	\ 'zshenv': '~/.zshenv',
 	\ 'zshrc': '~/.config/zsh/.zshrc',
 \ }

@@ -36,4 +36,7 @@ xrandr --output $MONITOR_LEFT --auto --left-of $MONITOR_RIGHT --rotate right
 
 setxkbmap -option caps:swapescape
 
-exec i3
+# Need to start i3 as a child of zsh, so we can simulate a login shell
+# This allows .zshenv to export variables that will be used by any
+# program launched in i3
+exec zsh -c i3

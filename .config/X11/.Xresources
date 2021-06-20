@@ -1,6 +1,8 @@
 *monitorLeft: DVI-I-1
 *monitorRight: HDMI-0
 
+Xcursor.size: 24
+
 #include ".Xcolors"
 
 ! vim: set filetype=xdefaults:

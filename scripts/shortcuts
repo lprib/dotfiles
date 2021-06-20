@@ -9,9 +9,9 @@ rofi	~/.config/rofi/config.rasi
 rofitheme	~/.config/rofi/theme.rasi
 vim	~/.config/nvim/init.vim
 xcolors	~/.config/X11/.Xcolors
-xinitrc	~/.config/X11/.xinitrc
+xinitrc	~/.xinitrc
 xresources	~/.config/X11/.Xresources
-zprofile	~/.zprofile
+zshenv	~/.zshenv
 zshrc	~/.config/zsh/.zshrc
 
 # vim: set ts=16:
