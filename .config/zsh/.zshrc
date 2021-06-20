@@ -8,10 +8,9 @@ ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(colored-man-pages zsh-vi-mode zsh-syntax-highlighting)
+plugins=(colored-man-pages command-not-found zsh-vi-mode zsh-syntax-highlighting)
 
 prev_aliases=$(alias -L) # cache previous aliases
-
 source $ZSH/oh-my-zsh.sh
 # remove all aliases set by oh-my-zsh
 unalias -m "*"

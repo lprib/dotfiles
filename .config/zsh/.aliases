@@ -1,7 +1,10 @@
-alias ls="exa -la --no-permissions --group-directories-first --no-user --no-time"
-alias vim="nvim"
-alias ec="editconf"
-alias sudo="sudo " # allows use of aliases when using sudo
+alias cg="confgit"
 alias confgit="git --git-dir $HOME/.dotfilesgit --work-tree=$HOME"
+alias ec="editconf"
 alias htop="gotop"
+alias ls="exa -la --no-permissions --group-directories-first --no-user --no-time"
+alias sudo="sudo " # allows use of aliases when using sudo
+alias vim="nvim"
+
+# vim: set filetype=zsh:
 
