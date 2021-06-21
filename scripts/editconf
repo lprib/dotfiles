@@ -33,7 +33,7 @@ open_shortcut() {
 		read name path <<< "$shortcut"
 		if [[ $name == $2 ]]; then
 			eval "$1 $path"
-			break
+			return
 		fi
 	done
 	echo "Shortcut $2 not found"

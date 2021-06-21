@@ -7,6 +7,8 @@ let g:my_shortcuts = {
 	\ 'ranger': '~/.config/ranger/rc.conf',
 	\ 'rofi': '~/.config/rofi/config.rasi',
 	\ 'rofitheme': '~/.config/rofi/theme.rasi',
+	\ 'shortcuts': '~/scripts/shortcuts',
+	\ 'todo': '~/scripts/todo',
 	\ 'vim': '~/.config/nvim/init.vim',
 	\ 'xcolors': '~/.config/X11/.Xcolors',
 	\ 'xinitrc': '~/.xinitrc',
