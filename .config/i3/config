@@ -81,7 +81,22 @@ mode "resize" {
    bindsym $mod+r mode "default"
 }
 
+mode "gaps" {
+   bindsym h gaps outer all minus 5
+   bindsym j gaps inner all plus 5
+   bindsym k gaps inner all minus 5
+   bindsym l gaps outer all plus 5
+   bindsym r exec i3-msg gaps inner all set 0 && i3-msg gaps outer all set 0
+
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+   bindsym $mod+g mode "default"
+}
+
+hide_edge_borders smart_no_gaps
+
 bindsym $mod+r mode "resize"
+bindsym $mod+g mode "gaps"
 
 bindsym $mod+equal exec --no-startup-id amixer -D pulse set Master 5%+
 bindsym $mod+minus exec --no-startup-id amixer -D pulse set Master 5%-
@@ -114,7 +129,7 @@ client.urgent $redBg $redBg $redText $redBg
 client.placeholder $darkOutline $darkBg $darkText $darkOutline
 client.background $darkBg
 
-bindsym $mod+d exec --no-startup-id "start-rofi -show run"
+bindsym $mod+d exec start-rofi -show run
 
 bindsym $mod+Shift+e exec exit-i3
 
@@ -131,5 +146,7 @@ workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace back_and_forth
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+for_window [class="mixerpopup"] floating enable
 
 # vim: set filetype=sh:

@@ -22,7 +22,7 @@ modules-left = i3
 inherit = common
 monitor = ${xrdb:polybar.monitorRight:}
 modules-left = i3
-modules-right = spotify previous playpause next date
+modules-right = spotify previous playpause next pulseaudio date
 
 
 [module/date]
@@ -100,3 +100,10 @@ type = custom/ipc
 hook-0 = echo ""
 ; Playing/paused show song name and artist
 hook-1 = "spotifyctl -q status --format '%artist%: %title%' --max-artist-length 30 --max-title-length 30"
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <label-volume>
+label-volume = "Volume %percentage%%"
+sink = alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y74ZJ4W095D3EA-00.analog-stereo
+click-right = alacritty -e pulsemixer
