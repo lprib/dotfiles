@@ -122,7 +122,7 @@ set_from_resource $redText i3wm.redText None
 set_from_resource $redOutline i3wm.redOutline None
 
 #border background text indicator
-client.focused $lightBg $lightBg $lightText $lightOutline
+client.focused $lightBg $lightBg $lightText $lightBg
 client.focused_inactive $darkOutline $darkBg $darkText $darkOutline
 client.unfocused $darkBg $darkBg $darkText $darkOutline
 client.urgent $redBg $redBg $redText $redBg

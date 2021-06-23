@@ -99,7 +99,7 @@ type = custom/ipc
 ; Default
 hook-0 = echo ""
 ; Playing/paused show song name and artist
-hook-1 = "spotifyctl -q status --format '%artist%: %title%' --max-artist-length 30 --max-title-length 30"
+hook-1 = "spotifyctl -q status --format '%artist%: %title%' --max-artist-length 30 --max-title-length 50"
 
 [module/pulseaudio]
 type = internal/pulseaudio

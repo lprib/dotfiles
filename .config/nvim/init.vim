@@ -155,6 +155,11 @@ function! SetupCoc()
 
     let g:tex_flavor = "latex"
 
+    " map <leader>b to build latex
+    augroup latex_build
+        autocmd!
+        autocmd FileType tex noremap <silent> <leader>b :call CocAction("runCommand", "latex.Build")<cr>
+    augroup END
 endfunction
 
 function! s:show_documentation()

@@ -14,6 +14,7 @@ vim	~/.config/nvim/init.vim
 xcolors	~/.config/X11/.Xcolors
 xinitrc	~/.xinitrc
 xresources	~/.config/X11/.Xresources
+zathura	~/.config/zathura/zathurarc
 zshenv	~/.zshenv
 zshrc	~/.config/zsh/.zshrc
 
