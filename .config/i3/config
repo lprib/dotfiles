@@ -1,5 +1,7 @@
 set $mod Mod4
 
+font pango:Terminus 12
+
 floating_modifier $mod
 
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -27,6 +29,7 @@ bindsym $mod+e layout toggle split
 
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
+
 
 bindsym $mod+a focus parent
 bindsym $mod+z focus child
@@ -70,6 +73,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+r restart
 
+bindsym $mod+r mode "resize"
 mode "resize" {
    bindsym h resize shrink width 10 px or 10 ppt
    bindsym j resize grow height 10 px or 10 ppt
@@ -81,6 +85,7 @@ mode "resize" {
    bindsym $mod+r mode "default"
 }
 
+bindsym $mod+g mode "gaps"
 mode "gaps" {
    bindsym h gaps outer all minus 5
    bindsym j gaps inner all plus 5
@@ -93,10 +98,21 @@ mode "gaps" {
    bindsym $mod+g mode "default"
 }
 
-hide_edge_borders smart_no_gaps
+set $open_mode_label "Firefox Ranger Spotify Transmission"
+bindsym $mod+o mode $open_mode_label
+mode $open_mode_label {
+   bindsym f exec firefox & i3-msg mode default
+   bindsym r exec alacritty -e ranger & i3-msg mode default
+   bindsym s exec spotify & i3-msg mode default
+   bindsym z exec zathura & i3-msg mode default
+   bindsym t exec transmission-gtk & i3-msg mode default
 
-bindsym $mod+r mode "resize"
-bindsym $mod+g mode "gaps"
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+   bindsym $mod+o mode "default"
+}
+
+hide_edge_borders smart_no_gaps
 
 bindsym $mod+equal exec --no-startup-id amixer -D pulse set Master 5%+
 bindsym $mod+minus exec --no-startup-id amixer -D pulse set Master 5%-
@@ -145,7 +161,7 @@ bindsym $mod+Control+l move workspace to output $monitorRight
 workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace back_and_forth
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 for_window [class="mixerpopup"] floating enable
 
