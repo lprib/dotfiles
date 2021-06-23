@@ -23,6 +23,7 @@ set encoding=utf-8
 set cmdheight=2
 set scrolloff=2
 set inccommand=nosplit
+set whichwrap+=h,l
 
 autocmd vimenter * ++nested colorscheme gruvbox
 

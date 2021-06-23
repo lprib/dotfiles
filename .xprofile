@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# since this is run by the display manager
+# zsh will not be used as a login shell
+# so we need so source gloabl vars here
+source $HOME/scripts/globals
+
+source $HOME/scripts/xsetup
+
+
+
