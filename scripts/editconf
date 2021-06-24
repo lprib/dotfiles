@@ -41,8 +41,7 @@ open_shortcut() {
 
 list_shortcuts() {
 	for shortcut in "${shortcuts_array[@]}"; do
-		read name path <<< "$shortcut"
-		echo $name
+		cut -f1 <<< $shortcut
 	done
 }
 

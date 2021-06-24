@@ -16,6 +16,7 @@ scroll-down = "#i3.next"
 inherit = common
 monitor = ${xrdb:polybar.monitorLeft:}
 modules-left = i3
+modules-right = date
 
 
 [bar/rightbar]
