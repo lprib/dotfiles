@@ -13,7 +13,7 @@ plugins=(colored-man-pages command-not-found zsh-vi-mode zsh-syntax-highlighting
 prev_aliases=$(alias -L) # cache previous aliases
 source $ZSH/oh-my-zsh.sh
 # remove all aliases set by oh-my-zsh
-unalias -m "*"
+# unalias -m "*"
 eval "$prev_aliases" #reinstate previous aliases
 
 HISTFILE=$XDG_DATA_HOME/zsh/.histfile

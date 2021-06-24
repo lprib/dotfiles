@@ -1,6 +1,8 @@
 let g:my_shortcuts = {
 	\ 'alacritty': '~/.config/alacritty/alacritty.yml',
 	\ 'aliases': '~/.config/zsh/.aliases',
+	\ 'bashrc': '~/.config/bash/bashrc',
+	\ 'globals': '~/scripts/globals',
 	\ 'gotop': '~/.config/gotop/gotop.conf',
 	\ 'i3': '~/.config/i3/config',
 	\ 'polybar': '~/.config/polybar/config',
@@ -13,6 +15,8 @@ let g:my_shortcuts = {
 	\ 'xcolors': '~/.config/X11/.Xcolors',
 	\ 'xinitrc': '~/.xinitrc',
 	\ 'xresources': '~/.config/X11/.Xresources',
+	\ 'xsetup': '~/scripts/xsetup',
+	\ 'zathura': '~/.config/zathura/zathurarc',
 	\ 'zshenv': '~/.zshenv',
 	\ 'zshrc': '~/.config/zsh/.zshrc',
 \ }

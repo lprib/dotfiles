@@ -1,3 +1,8 @@
+# aliases:
+
+# This is required so that bash can source an alternate rc and modify it's HISTFILE
+# This is to avoid bash creating .bash_history in home dir
+alias bash="bash --init-file $XDG_CONFIG_HOME/bash/.bashrc"
 alias cg="confgit"
 alias confgit="git --git-dir $HOME/.dotfilesgit --work-tree=$HOME"
 alias ec="editconf"
@@ -5,6 +10,7 @@ alias htop="gotop"
 alias ls="exa -la --no-permissions --group-directories-first --no-user --no-time"
 alias sudo="sudo " # allows use of aliases when using sudo
 alias vim="nvim"
+
 
 # vim: set filetype=zsh:
 
