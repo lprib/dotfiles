@@ -101,17 +101,17 @@ mode "gaps" {
 set $open_mode_label "[Open] Firefox Ranger Spotify Zathura Transmission"
 bindsym $mod+o mode $open_mode_label
 mode $open_mode_label {
-   bindsym f exec firefox & i3-msg mode default
-   bindsym r exec alacritty -e ranger & i3-msg mode default
-   bindsym s exec spotify & i3-msg mode default
-   bindsym z exec zathura & i3-msg mode default
-   bindsym t exec transmission-gtk & i3-msg mode default
+   bindsym f exec firefox                    & i3-msg mode default
+   bindsym r exec alacritty -e ranger        & i3-msg mode default
+   bindsym s exec spotify                    & i3-msg mode default
+   bindsym z exec zathura                    & i3-msg mode default
+   bindsym t exec transmission-gtk           & i3-msg mode default
 
-   bindsym $mod+f exec firefox & i3-msg mode default
-   bindsym $mod+r exec alacritty -e ranger & i3-msg mode default
-   bindsym $mod+s exec spotify & i3-msg mode default
-   bindsym $mod+z exec zathura & i3-msg mode default
-   bindsym $mod+t exec transmission-gtk & i3-msg mode default
+   bindsym $mod+f exec firefox               & i3-msg mode default
+   bindsym $mod+r exec alacritty -e ranger   & i3-msg mode default
+   bindsym $mod+s exec spotify               & i3-msg mode default
+   bindsym $mod+z exec zathura               & i3-msg mode default
+   bindsym $mod+t exec transmission-gtk      & i3-msg mode default
 
    bindsym Return mode "default"
    bindsym Escape mode "default"
@@ -128,47 +128,44 @@ bindsym $mod+p exec spotifyctl playpause
 bindsym $mod+bracketright exec spofiyctl next
 bindsym $mod+bracketleft exec spotifyctl previous
 
-set_from_resource $monitorLeft i3wm.monitorLeft None
+set_from_resource $monitorLeft  i3wm.monitorLeft None
 set_from_resource $monitorRight i3wm.monitorRight None
 
-set_from_resource $darkBg i3wm.darkBg None
-set_from_resource $darkText i3wm.darkText None
-set_from_resource $darkOutline i3wm.darkOutline None
-set_from_resource $lightBg i3wm.lightBg None
-set_from_resource $lightText i3wm.lightText None
-set_from_resource $lightOutline i3wm.lightOutline None
-set_from_resource $errorColor i3wm.errorColor None
-set_from_resource $infoColor i3wm.infoColor None
-set_from_resource $redBg i3wm.redBg None
-set_from_resource $redText i3wm.redText None
-set_from_resource $redOutline i3wm.redOutline None
+set_from_resource $darkBg        i3wm.darkBg None
+set_from_resource $darkText      i3wm.darkText None
+set_from_resource $darkOutline   i3wm.darkOutline None
+set_from_resource $lightBg       i3wm.lightBg None
+set_from_resource $lightText     i3wm.lightText None
+set_from_resource $lightOutline  i3wm.lightOutline None
+set_from_resource $errorColor    i3wm.errorColor None
+set_from_resource $infoColor     i3wm.infoColor None
+set_from_resource $redBg         i3wm.redBg None
+set_from_resource $redText       i3wm.redText None
+set_from_resource $redOutline    i3wm.redOutline None
 
 #border background text indicator
-client.focused $lightBg $lightBg $lightText $lightBg
+client.focused          $lightBg $lightBg $lightText $lightBg
 client.focused_inactive $darkOutline $darkBg $darkText $darkOutline
-client.unfocused $darkBg $darkBg $darkText $darkOutline
-client.urgent $redBg $redBg $redText $redBg
-client.placeholder $darkOutline $darkBg $darkText $darkOutline
-client.background $darkBg
+client.unfocused        $darkBg $darkBg $darkText $darkOutline
+client.urgent           $redBg $redBg $redText $redBg
+client.placeholder      $darkOutline $darkBg $darkText $darkOutline
+client.background       $darkBg
 
 bindsym $mod+d exec start-rofi -show run
-
 bindsym $mod+Shift+e exec exit-i3
 
 mouse_warping output
+workspace_auto_back_and_forth yes
+bindsym $mod+Tab workspace back_and_forth
 
 for_window [class=".*"] border pixel 1
-
 for_window [class="Spotify"] move to workspace $ws10
+for_window [class="mixerpopup"] floating enable
 
 bindsym $mod+Control+h move workspace to output $monitorLeft
 bindsym $mod+Control+l move workspace to output $monitorRight
 
-workspace_auto_back_and_forth yes
-bindsym $mod+Tab workspace back_and_forth
-
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 
-for_window [class="mixerpopup"] floating enable
+# vim: set filetype=sh ts=3 sts=3 et:
 
-# vim: set filetype=sh:

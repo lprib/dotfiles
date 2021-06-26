@@ -4,5 +4,6 @@ fix mouse going off screen issue
 editconf command completion
 editconf open multiple files at once
 polybar pulseaudio mute not showing correctly
+polybar redshift menu
 
 document: keybinds generation, general overview of scripts and inits used
