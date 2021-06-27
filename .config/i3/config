@@ -30,7 +30,6 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-
 bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
@@ -85,8 +84,9 @@ mode "resize" {
    bindsym $mod+r mode "default"
 }
 
-bindsym $mod+g mode "gaps"
-mode "gaps" {
+set $gaps_mode_label "[Gaps] inner:jk outer:hl reset:r"
+bindsym $mod+g mode $gaps_mode_label
+mode $gaps_mode_label {
    bindsym h gaps outer all minus 5
    bindsym j gaps inner all plus 5
    bindsym k gaps inner all minus 5
@@ -98,7 +98,7 @@ mode "gaps" {
    bindsym $mod+g mode "default"
 }
 
-set $open_mode_label "[Open] Firefox Ranger Spotify Zathura Transmission"
+set $open_mode_label "[Open] Firefox Ranger Spotify Zathura Transmission Vim"
 bindsym $mod+o mode $open_mode_label
 mode $open_mode_label {
    bindsym f exec firefox                    & i3-msg mode default
@@ -106,12 +106,14 @@ mode $open_mode_label {
    bindsym s exec spotify                    & i3-msg mode default
    bindsym z exec zathura                    & i3-msg mode default
    bindsym t exec transmission-gtk           & i3-msg mode default
+   bindsym v exec alacritty -e nvim          & i3-msg mode default
 
    bindsym $mod+f exec firefox               & i3-msg mode default
    bindsym $mod+r exec alacritty -e ranger   & i3-msg mode default
    bindsym $mod+s exec spotify               & i3-msg mode default
    bindsym $mod+z exec zathura               & i3-msg mode default
    bindsym $mod+t exec transmission-gtk      & i3-msg mode default
+   bindsym $mod+v exec alacritty -e nvim     & i3-msg mode default
 
    bindsym Return mode "default"
    bindsym Escape mode "default"

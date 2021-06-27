@@ -1,7 +1,8 @@
 let g:my_shortcuts = {
 	\ 'alacritty': '~/.config/alacritty/alacritty.yml',
 	\ 'aliases': '~/.config/zsh/.aliases',
-	\ 'bashrc': '~/.config/bash/bashrc',
+	\ 'bashrc': '~/.config/bash/.bashrc',
+	\ 'editconf': '~/scripts/editconf',
 	\ 'globals': '~/scripts/globals',
 	\ 'gotop': '~/.config/gotop/gotop.conf',
 	\ 'i3': '~/.config/i3/config',

@@ -39,8 +39,8 @@ noremap <c-s> :w<cr>
 nmap <c-_> <leader>c<space>
 vmap <c-_> <leader>c<space>gv
 
-" more logical map
 map Y y$
+nmap \ <c-^>
 
 set ts=4 sw=0
 

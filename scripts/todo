@@ -2,8 +2,7 @@ output current gaps value when i3 is in "gaps" mode
 background setting
 fix mouse going off screen issue
 editconf command completion
-editconf open multiple files at once
 polybar pulseaudio mute not showing correctly
 polybar redshift menu
-
+rewrite vim config in lua
 document: keybinds generation, general overview of scripts and inits used

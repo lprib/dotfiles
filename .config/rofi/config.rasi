@@ -1,5 +1,5 @@
 configuration {
-	combi-modi: "run";
+	modi: "run,calc,window";
 	show-icons: true;
 	theme: "~/.config/rofi/theme.rasi";
 	run-shell-command: "{terminal} -e \"{cmd}\"";
