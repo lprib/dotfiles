@@ -42,6 +42,9 @@ vmap <c-_> <leader>c<space>gv
 map Y y$
 nmap \ <c-^>
 
+" Control backspace deletes word in insert mode:
+imap <c-H> <c-W>
+
 set ts=4 sw=0
 
 " enable parentheses coloring
@@ -59,7 +62,7 @@ let g:NERDAltDelims_java = 1
 noremap <silent> <leader>h :nohlsearch<cr>
 
 noremap <silent> <c-p> :FZF -i<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'rg --files -g ""'
 
 " recursively search for tags files
 set tags=./tag,tags;
@@ -159,7 +162,7 @@ function! SetupCoc()
     " map <leader>b to build latex
     augroup latex_build
         autocmd!
-        autocmd FileType tex noremap <silent> <leader>b :call CocAction("runCommand", "latex.Build")<cr>
+        autocmd FileType tex noremap <leader>b :w \| call CocAction("runCommand", "latex.Build")<cr>
     augroup END
 endfunction
 

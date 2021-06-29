@@ -6,3 +6,6 @@ polybar pulseaudio mute not showing correctly
 polybar redshift menu
 rewrite vim config in lua
 document: keybinds generation, general overview of scripts and inits used
+dwm
+/bin/sh link to dash or zsh (remove bash?)
+rewrite scripts with /bin/sh

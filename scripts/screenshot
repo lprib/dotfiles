@@ -1,0 +1,19 @@
+#!/bin/bash
+
+ss_file() {
+	filename=$(start-rofi -dmenu -i -p "Filename" -filter "~/pics/")
+	# expand path:
+	eval filename=$filename
+	maim -s -u > "$filename"
+}
+
+ss_cb() {
+	maim -s -u | xclip -selection clipboard -t image/png -i
+}
+
+choice=$(echo -e "Save\nClipboard" | start-rofi -dmenu -i -p "Screenshot")
+case $choice in
+	Save) ss_file ;;
+	Clipboard) ss_cb ;;
+esac
+

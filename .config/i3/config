@@ -169,5 +169,8 @@ bindsym $mod+Control+l move workspace to output $monitorRight
 
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 
+#screehshotting
+bindsym $mod+Shift+s exec screenshot
+
 # vim: set filetype=sh ts=3 sts=3 et:
 
