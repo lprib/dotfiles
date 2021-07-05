@@ -5,6 +5,7 @@ font:
     bold:
         family: Terminus
         style: Bold
+    size: 10
 
 schemes:
   gruvbox_material_hard_dark: &gruvbox_material_hard_dark

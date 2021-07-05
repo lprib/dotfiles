@@ -37,7 +37,7 @@ fi
 
 MONITOR_LEFT=$(xgetres monitorLeft)
 MONITOR_RIGHT=$(xgetres monitorRight)
-xrandr --output $MONITOR_RIGHT --auto --rotate normal
+xrandr --output $MONITOR_RIGHT --auto --rotate normal --primary
 xrandr --output $MONITOR_LEFT --auto --left-of $MONITOR_RIGHT --rotate right
 
 setxkbmap -option caps:swapescape

@@ -1,7 +1,5 @@
 call plug#begin()
-    Plug 'morhetz/gruvbox'
     Plug 'rking/ag.vim'
-    Plug 'kien/rainbow_parentheses.vim'
     Plug 'preservim/nerdcommenter'
     Plug 'wincent/terminus'
     Plug 'ludovicchabant/vim-lawrencium'
@@ -10,6 +8,14 @@ call plug#begin()
     Plug 'lervag/vimtex'
     Plug 'junegunn/fzf'
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
+
+    " theming:
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'itchyny/lightline.vim'
+    Plug 'morhetz/gruvbox'
+    " Plug 'kien/rainbow_parentheses.vim'
+
+    Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 nnoremap <space> <Nop>
@@ -27,17 +33,19 @@ set whichwrap+=h,l
 
 autocmd vimenter * ++nested colorscheme gruvbox
 
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_liststyle = 3
-let g:netrw_altv = 1
-let g:netrw_winsize = 15
-noremap <silent> <leader>1 :Lexplore<cr>
+" nvim-tree config:
+set termguicolors
+noremap <silent> <leader>1 :NvimTreeToggle<cr>
+let g:nvim_tree_auto_open = 1
+let g:nvim_tree_auto_close = 1
+let g:nvim_tree_follow = 1
+let g:nvim_tree_git_hl = 1
 
 " Carry over VSCode muscle memory
 noremap <c-s> :w<cr>
 nmap <c-_> <leader>c<space>
 vmap <c-_> <leader>c<space>gv
+nmap <c-a> ggVG
 
 map Y y$
 nmap \ <c-^>
@@ -48,10 +56,10 @@ imap <c-H> <c-W>
 set ts=4 sw=0
 
 " enable parentheses coloring
-autocmd vimenter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
+" autocmd vimenter * RainbowParenthesesToggle
+" autocmd Syntax * RainbowParenthesesLoadRound
+" autocmd Syntax * RainbowParenthesesLoadSquare
+" autocmd Syntax * RainbowParenthesesLoadBraces
 
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -67,18 +75,10 @@ let $FZF_DEFAULT_COMMAND = 'rg --files -g ""'
 " recursively search for tags files
 set tags=./tag,tags;
 
-" <leader>rc opens the nvim rc file
-noremap <leader>rc :tabe ~/.config/nvim/init.vim<cr>
 autocmd! BufWritePost init.vim source % | echo "Sourced" expand("%")
 
 " Break out of terminal with escape
 tnoremap <esc> <c-\><c-n>
-
-set statusline=
-set statusline+=%#TabLineSel#%f
-set statusline+=%#TabLine#
-set statusline+=%m%w%=
-set statusline+=%{&filetype}\ \|\ %L\ lines\ \|\ %l:%c\ 
 
 function! SetupCoc()
     let g:coc_global_extensions = [
