@@ -16,14 +16,14 @@ scroll-down = "#i3.next"
 inherit = common
 monitor = ${xrdb:polybar.monitorLeft:}
 modules-left = i3
-modules-right = date
+modules-right = windowtitle date
 
 
 [bar/rightbar]
 inherit = common
 monitor = ${xrdb:polybar.monitorRight:}
 modules-left = i3
-modules-right = spotify previous playpause next pulseaudio date
+modules-right = windowtitle spotify previous playpause next pulseaudio date
 
 
 [module/date]
@@ -100,11 +100,21 @@ type = custom/ipc
 ; Default
 hook-0 = echo ""
 ; Playing/paused show song name and artist
-hook-1 = "spotifyctl -q status --format '%artist%: %title%' --max-artist-length 30 --max-title-length 50"
+hook-1 = "spotifyctl -q status --format '%artist%: %title%' --max-artist-length 30 --max-title-length 50 | spotify-cut-artist"
 
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume = <label-volume>
-label-volume = "Volume %percentage%%"
+label-volume = "Vol  %percentage%%"
+label-muted  = "Mute %percentage%%"
 sink = alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y74ZJ4W095D3EA-00.analog-stereo
 click-right = alacritty -e pulsemixer
+
+[module/windowtitle]
+type = internal/xwindow
+format = <label>
+format-background = ${xrdb:polybar.darkHighlightedBg}
+format-foreground = ${xrdb:polybar.darkText}
+format-padding = 2
+label = %title%
+label-maxlen = 30

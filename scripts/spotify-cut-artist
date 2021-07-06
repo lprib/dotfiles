@@ -1,0 +1,5 @@
+#!/bin/bash
+# Remove a  preceding colon and space if the input starts with that.
+# Used from spotifyctl when there is no artist (podcast for example)
+input=$(cat)
+[[ "$input" == ": "* ]] && echo "${input:2}" || echo "$input"
