@@ -2,7 +2,7 @@
 font-0 = Terminus:size=14;2
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=8:1;2"
 height = 16
-module-margin = 1
+module-margin = 0
 padding= 0
 spacing = 0
 background = ${xrdb:polybar.darkBg}
@@ -10,6 +10,13 @@ foreground = ${xrdb:polybar.darkText}
 enable-ipc = true
 scroll-up = "#i3.prev"
 scroll-down = "#i3.next"
+; custom var:
+permodule-padding = 2
+spotify-buttons-padding = 1
+
+[lightcolors]
+format-background = ${xrdb:polybar.darkSubtleHighlightedBg}
+format-foreground = ${xrdb:polybar.darkText}
 
 
 [bar/leftbar]
@@ -23,11 +30,13 @@ modules-right = windowtitle date
 inherit = common
 monitor = ${xrdb:polybar.monitorRight:}
 modules-left = i3
-modules-right = windowtitle spotify previous playpause next pulseaudio date
+modules-right = spotify previous playpause next windowtitle cpu pulseaudio date
 
 
 [module/date]
 type = internal/date
+inherit = lightcolors
+format-padding = ${common.permodule-padding}
 date = %e %b %I:%M:%S
 
 
@@ -65,6 +74,8 @@ label-visible-padding = ${self.label-padding}
 
 [module/previous]
 type = custom/ipc
+inherit = lightcolors
+format-padding = ${common.spotify-buttons-padding}
 format-font = 2
 ; Default
 hook-0 = echo ""
@@ -75,16 +86,21 @@ click-left = "spotifyctl -q previous"
 
 [module/next]
 type = custom/ipc
+inherit = lightcolors
+format-padding = ${common.spotify-buttons-padding}
 format-font = 2
 ; Default
 hook-0 = echo ""
 ; When spotify active
-hook-1 = echo -e "\uf04e"
+; add an extra space here so padding works out (hack)
+hook-1 = echo -e "\uf04e "
 click-left = "spotifyctl -q next"
 
 
 [module/playpause]
 type = custom/ipc
+inherit = lightcolors
+format-padding = ${common.spotify-buttons-padding}
 format-font = 2
 ; Default
 hook-0 = echo ""
@@ -97,24 +113,32 @@ click-left = "spotifyctl -q playpause"
 
 [module/spotify]
 type = custom/ipc
-; Default
+inherit = lightcolors
+format-padding = ${common.permodule-padding}
 hook-0 = echo ""
-; Playing/paused show song name and artist
 hook-1 = "spotifyctl -q status --format '%artist%: %title%' --max-artist-length 30 --max-title-length 50 | spotify-cut-artist"
 
 [module/pulseaudio]
 type = internal/pulseaudio
+format-volume-padding = ${common.permodule-padding}
+format-muted-padding = ${common.permodule-padding}
 format-volume = <label-volume>
-label-volume = "Vol  %percentage%%"
-label-muted  = "Mute %percentage%%"
+label-volume = "Vol  %percentage:3%%"
+label-muted  = "Mute %percentage:3%%"
 sink = alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y74ZJ4W095D3EA-00.analog-stereo
 click-right = alacritty -e pulsemixer
 
 [module/windowtitle]
 type = internal/xwindow
 format = <label>
-format-background = ${xrdb:polybar.darkHighlightedBg}
-format-foreground = ${xrdb:polybar.darkText}
 format-padding = 2
 label = %title%
+label-minlen = 30
 label-maxlen = 30
+label-alignment = center
+
+[module/cpu]
+type=internal/cpu
+inherit = lightcolors
+format-padding = 2
+label = Cpu %percentage:3%%

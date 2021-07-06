@@ -13,3 +13,4 @@ purge unused manually installed packages
 .z file (directory changer) in home dir
 update nvim to use inbuilt LSP instead of CoC
 bspwm???
+replace build.sh files with Makefile
