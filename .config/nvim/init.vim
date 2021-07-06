@@ -15,6 +15,7 @@ call plug#begin()
     Plug 'morhetz/gruvbox'
     " Plug 'kien/rainbow_parentheses.vim'
 
+    Plug 'junegunn/goyo.vim'
     Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
@@ -71,6 +72,11 @@ noremap <silent> <leader>h :nohlsearch<cr>
 
 noremap <silent> <c-p> :FZF -i<cr>
 let $FZF_DEFAULT_COMMAND = 'rg --files -g ""'
+
+let g:goyo_width = "95%"
+let g:goyo_height = "95%"
+
+noremap <silent> <leader>z :Goyo<cr>
 
 " recursively search for tags files
 set tags=./tag,tags;
@@ -182,40 +188,6 @@ function! s:check_back_space() abort
 endfunction
 
 call SetupCoc()
-
-
-" Implement Zen mode:
-
-let s:zen_enabled = 0
-let s:zen_options_to_save = [
-    \ "showmode",
-    \ "ruler",
-    \ "laststatus",
-    \ "showcmd",
-    \ "cmdheight",
-    \ "showtabline",
-    \ "signcolumn",
-    \ "number",
-    \ "relativenumber"
-\]
-let s:zen_saved_options = {}
-
-function! ToggleZen()
-    if s:zen_enabled == 0
-        let s:zen_enabled = 1
-        for option_name in s:zen_options_to_save
-            execute "let s:zen_saved_options." . option_name . " = &" . option_name
-        endfor
-        set noshowmode noruler noshowcmd cmdheight=1 laststatus=0 showtabline=0 signcolumn=no nonumber norelativenumber
-    else
-        let s:zen_enabled = 0
-        for [option_name, value] in items(s:zen_saved_options)
-            execute "let &" . option_name . " = '" . value . "'"
-        endfor
-    endif
-endfunction
-
-noremap <silent> <leader>z :call ToggleZen()<cr>
 
 " import shortcuts file
 runtime shortcuts.vim
