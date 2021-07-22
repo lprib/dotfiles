@@ -2,6 +2,7 @@ let g:my_shortcuts = {
 	\ 'alacritty': '~/.config/alacritty/alacritty.yml',
 	\ 'aliases': '~/.config/zsh/.aliases',
 	\ 'bashrc': '~/.config/bash/.bashrc',
+	\ 'dwm': '~/packages/dwm/config.def.h',
 	\ 'editconf': '~/scripts/editconf',
 	\ 'globals': '~/scripts/globals',
 	\ 'gotop': '~/.config/gotop/gotop.conf',

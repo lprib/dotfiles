@@ -13,6 +13,7 @@ scroll-down = "#i3.next"
 ; custom var:
 permodule-padding = 2
 spotify-buttons-padding = 1
+override-redirect = false
 
 [lightcolors]
 format-background = ${xrdb:polybar.darkSubtleHighlightedBg}
@@ -22,15 +23,15 @@ format-foreground = ${xrdb:polybar.darkText}
 [bar/leftbar]
 inherit = common
 monitor = ${xrdb:polybar.monitorLeft:}
-modules-left = i3
-modules-right = windowtitle date
+modules-left = ${env:WINDOW_MANAGER_MODULE:i3}
+modules-right = date
 
 
 [bar/rightbar]
 inherit = common
 monitor = ${xrdb:polybar.monitorRight:}
-modules-left = i3
-modules-right = spotify previous playpause next windowtitle cpu pulseaudio date
+modules-left = ${env:WINDOW_MANAGER_MODULE:i3}
+modules-right = redshift spotify previous playpause next cpu pulseaudio date
 
 
 [module/date]
@@ -118,6 +119,7 @@ format-padding = ${common.permodule-padding}
 hook-0 = echo ""
 hook-1 = "spotifyctl -q status --format '%artist%: %title%' --max-artist-length 30 --max-title-length 50 | spotify-cut-artist"
 
+
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume-padding = ${common.permodule-padding}
@@ -128,6 +130,7 @@ label-muted  = "Mute %percentage:3%%"
 sink = alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y74ZJ4W095D3EA-00.analog-stereo
 click-right = alacritty -e pulsemixer
 
+
 [module/windowtitle]
 type = internal/xwindow
 format = <label>
@@ -137,8 +140,103 @@ label-minlen = 30
 label-maxlen = 30
 label-alignment = center
 
+
 [module/cpu]
 type=internal/cpu
 inherit = lightcolors
 format-padding = 2
 label = Cpu %percentage:3%%
+
+
+[module/dwm]
+type = internal/dwm
+format = <label-tags> <label-layout> <label-floating> <label-title>
+; Path to dwm socket (default: /tmp/dwm.sock)
+socket-path = /tmp/dwm.sock
+
+; Left-click to view tag, right-click to toggle tag view
+enable-tags-click = true
+; Scroll to cycle between available tags
+enable-tags-scroll = true
+; If true and enable-tags-scroll = true, scrolling will view all tags regardless if occupied
+tags-scroll-empty = false
+; If true and enable-tags-scroll = true, scrolling will cycle through tags backwards
+tags-scroll-reverse = false
+; If true and enable-tags-scroll = true, wrap active tag when scrolling
+tags-scroll-wrap = true
+; Left-click to set secondary layout, right-click to switch to previous layout
+enable-layout-click = true
+; Scroll to cycle between available layouts
+enable-layout-scroll = true
+; Wrap when scrolling and reaching beginning/end of layouts
+layout-scroll-wrap = true
+; Reverse scroll direction
+layout-scroll-reverse = false
+
+; If enable-layout-click = true, clicking the layout symbol will switch to this layout
+secondary-layout-symbol = [M]
+
+; Separator in between shown tags
+; label-separator = |
+
+; Title of currently focused window
+; Available tokens:
+;   %title%
+label-title = %title%
+label-title-padding = 1
+label-title-maxlen = 30
+
+; Defaults to 'Desktop'
+label-title-default =
+
+; Symbol of current layout
+; Available tokens:
+;   %symbol%
+label-layout = %symbol%
+label-layout-padding = 4
+label-layout-foreground = ${xrdb:polybar.darkText}
+label-layout-background = ${xrdb:polybar.darkSubtleHighlightedBg}
+
+; Text to show when currently focused window is floating
+label-floating = F
+label-floating-padding = 1
+label-floating-foreground = ${xrdb:polybar.darkText}
+label-floating-background = ${xrdb:polybar.darkSubtleHighlightedBg}
+
+; States: focused, unfocused, visible, urgent, empty
+; Available tokens:
+;   %name%
+
+; focused = Selected tag on focused monitor
+label-focused = %name%
+label-focused-background = ${xrdb:polybar.lightBg}
+label-focused-foreground = ${xrdb:polybar.lightText}
+label-focused-padding = 1
+
+; unfocused = Unselected tag on unselected monitor
+label-unfocused = %name%
+label-unfocused-background = ${xrdb:polybar.darkHighlightedBg}
+label-unfocused-foreground = ${xrdb:polybar.lightText}
+label-unfocused-border = ${xrdb:polybar.redBg}
+label-unfocused-padding = 1
+
+; visible = Unselected tag, but occupied tag on any monitor
+label-visible = %name%
+label-visible-background = ${xrdb:polybar.darkBg}
+label-visible-foreground = ${xrdb:polybar.darkText}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Unselected tag with window that has urgency hint set
+label-urgent = %name%
+label-urgent-background = ${xrdb:polybar.redBg}
+label-urgent-foreground = ${xrdb:polybar.redText}
+label-urgent-padding = 1
+
+; empty = Unselected and unoccupied tag
+; This can be set to an empty string to hide empty tags
+label-empty =
+label-empty-background = ${colors.primary}
+label-empty-padding = 1
+
+; vim: set filetype=dosini:
+
