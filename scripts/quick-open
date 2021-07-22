@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo [F]irefox
+echo [R]anger
+echo [S]potify
+echo [T]ransmission
+echo [V]im
+echo
+echo [Q]uit
+echo
+
+read -p ">" -n 1 k
+
+case "$k" in
+	f) exec firefox ;;
+	r) ranger ;;
+	s) exec spotify ;;
+	t) exec transmission-gtk ;;
+	v) nvim ;;
+esac
