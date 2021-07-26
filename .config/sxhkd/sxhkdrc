@@ -1,0 +1,13 @@
+super + {equal, minus, m}
+	amixer -D pulse set Master {5%+, 5%-, toggle}
+
+super + {p, bracketleft, bracketright}
+	spotifyctl {playpause, previous, next}
+
+super + s
+	screenshot
+
+super + o; super + {f, r, s, z, t, v}
+	{firefox, alacritty -e ranger, spotify, zathura, transmission-gtk, alacritty -e nvim}
+
+# vim: set filetype=sh :

@@ -98,37 +98,7 @@ mode $gaps_mode_label {
    bindsym $mod+g mode "default"
 }
 
-set $open_mode_label "[Open] Firefox Ranger Spotify Zathura Transmission Vim"
-bindsym $mod+o mode $open_mode_label
-mode $open_mode_label {
-   bindsym f exec firefox                    & i3-msg mode default
-   bindsym r exec alacritty -e ranger        & i3-msg mode default
-   bindsym s exec spotify                    & i3-msg mode default
-   bindsym z exec zathura                    & i3-msg mode default
-   bindsym t exec transmission-gtk           & i3-msg mode default
-   bindsym v exec alacritty -e nvim          & i3-msg mode default
-
-   bindsym $mod+f exec firefox               & i3-msg mode default
-   bindsym $mod+r exec alacritty -e ranger   & i3-msg mode default
-   bindsym $mod+s exec spotify               & i3-msg mode default
-   bindsym $mod+z exec zathura               & i3-msg mode default
-   bindsym $mod+t exec transmission-gtk      & i3-msg mode default
-   bindsym $mod+v exec alacritty -e nvim     & i3-msg mode default
-
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-   bindsym $mod+o mode "default"
-}
-
 hide_edge_borders smart_no_gaps
-
-bindsym $mod+equal exec --no-startup-id amixer -D pulse set Master 5%+
-bindsym $mod+minus exec --no-startup-id amixer -D pulse set Master 5%-
-bindsym $mod+m exec --no-startup-id amixer -D pulse set Master toggle
-
-bindsym $mod+p exec spotifyctl playpause
-bindsym $mod+bracketright exec spofiyctl next
-bindsym $mod+bracketleft exec spotifyctl previous
 
 set_from_resource $monitorLeft  i3wm.monitorLeft None
 set_from_resource $monitorRight i3wm.monitorRight None
@@ -168,9 +138,6 @@ bindsym $mod+Control+h move workspace to output $monitorLeft
 bindsym $mod+Control+l move workspace to output $monitorRight
 
 exec --no-startup-id $HOME/.config/polybar/launch.sh
-
-#screehshotting
-bindsym $mod+Shift+s exec screenshot
 
 # vim: set filetype=sh ts=3 sts=3 et:
 

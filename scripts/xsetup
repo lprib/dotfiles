@@ -40,5 +40,7 @@ MONITOR_RIGHT=$(xgetres monitorRight)
 xrandr --output $MONITOR_RIGHT --auto --rotate normal --primary
 xrandr --output $MONITOR_LEFT --auto --left-of $MONITOR_RIGHT --rotate right
 
+sxhkd &
+
 setxkbmap -option caps:swapescape
 

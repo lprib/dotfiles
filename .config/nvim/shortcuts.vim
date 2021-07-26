@@ -7,6 +7,7 @@ let g:my_shortcuts = {
 	\ 'globals': '~/scripts/globals',
 	\ 'gotop': '~/.config/gotop/gotop.conf',
 	\ 'i3': '~/.config/i3/config',
+	\ 'keys': '~/.config/sxhkd/sxhkdrc',
 	\ 'polybar': '~/.config/polybar/config',
 	\ 'ranger': '~/.config/ranger/rc.conf',
 	\ 'rofi': '~/.config/rofi/config.rasi',
