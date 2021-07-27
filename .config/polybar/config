@@ -31,7 +31,7 @@ modules-right = date
 inherit = common
 monitor = ${xrdb:polybar.monitorRight:}
 modules-left = ${env:WINDOW_MANAGER_MODULE:i3}
-modules-right = redshift spotify previous playpause next cpu pulseaudio date
+modules-right = spotify previous playpause next network cpu pulseaudio date
 
 
 [module/date]
@@ -147,6 +147,17 @@ inherit = lightcolors
 format-padding = 2
 label = Cpu %percentage:3%%
 
+
+[module/network]
+type=internal/network
+interface=enp3s0
+
+format-connected = <label-connected>
+label-connected = Connected %local_ip%
+label-connected-padding = ${common.permodule-padding}
+
+label-disconnected = Disconnected
+label-disconnected-padding = ${common.permodule-padding}
 
 [module/dwm]
 type = internal/dwm

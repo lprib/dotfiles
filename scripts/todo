@@ -10,4 +10,5 @@ purge unused manually installed packages
 .z file (directory changer) in home dir
 update nvim to use inbuilt LSP instead of CoC
 replace build.sh files with Makefile
-sxhkd - simple X hotkey daemon
+spotify polybar module is broken with dwm-polybar
+sxhkd quick open not working sometimes

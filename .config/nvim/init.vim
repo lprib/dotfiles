@@ -23,6 +23,7 @@ nnoremap <space> <Nop>
 let mapleader=" "
 
 set number relativenumber
+set ignorecase smartcase
 set splitright splitbelow showcmd noshowmode wildmenu lazyredraw incsearch
 set shortmess+=Ic
 set diffopt+=vertical
