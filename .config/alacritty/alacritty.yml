@@ -32,6 +32,7 @@ schemes:
       white:   '0xd4be98'
 
 colors: *gruvbox_material_hard_dark
+background_opacity: 0.9
 #Italic:
 #family: Terminus
 #style: Regular

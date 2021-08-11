@@ -33,10 +33,12 @@ set scrolloff=2
 set inccommand=nosplit
 set whichwrap+=h,l
 
+" Make vim respect terminal transparency
+autocmd ColorScheme * hi Normal guibg=NONE ctermbg=None
+
 autocmd vimenter * ++nested colorscheme gruvbox
 
 " nvim-tree config:
-set termguicolors
 noremap <silent> <leader>1 :NvimTreeToggle<cr>
 let g:nvim_tree_auto_open = 1
 let g:nvim_tree_auto_close = 1
