@@ -1,0 +1,7 @@
+#!/bin/bash
+
+Choice=$(echo -e "Logout\nShutdown\nReboot\nCancel" | start-rofi -dmenu -i -p "Power options")
+[ "$Choice" == "Logout" ] && pkill dwm
+[ "$Choice" == "Shutdown" ] && shutdown now
+[ "$Choice" == "Reboot" ] && reboot
+

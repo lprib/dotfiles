@@ -136,6 +136,8 @@ function! SetupCoc()
     xmap <leader>f  <Plug>(coc-format-selected)
     nmap <leader>f  <Plug>(coc-format-selected)
 
+    imap <c-h> <esc>:call CocActionAsync('showSignatureHelp')<cr>i
+
     " Applying codeAction to the selected region.
     " Example: `<leader>aap` for current paragraph
     xmap <leader>a  <Plug>(coc-codeaction-selected)
