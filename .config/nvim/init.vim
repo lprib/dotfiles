@@ -7,7 +7,9 @@ call plug#begin()
     Plug 'tpope/vim-sleuth'
     Plug 'lervag/vimtex'
     Plug 'junegunn/fzf'
+
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
 
     " theming:
     Plug 'kyazdani42/nvim-web-devicons' " for file icons

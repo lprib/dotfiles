@@ -19,5 +19,6 @@ HISTFILE=$XDG_DATA_HOME/zsh/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
+bindkey -M vicmd v edit-command-line
 
 source $ZDOTDIR/.aliases
