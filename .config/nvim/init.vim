@@ -10,6 +10,7 @@ call plug#begin()
 
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
     Plug 'jackguo380/vim-lsp-cxx-highlight'
+    Plug 'tikhomirov/vim-glsl'
 
     " theming:
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
