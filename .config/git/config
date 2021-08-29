@@ -1,3 +1,5 @@
 [user]
 	email = jackpribis@gmail.com
 	name = Liam Pribis
+[core]
+	autocrlf = input

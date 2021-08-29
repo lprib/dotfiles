@@ -1,5 +1,3 @@
-output current gaps value when i3 is in "gaps" mode
-background setting
 editconf command completion
 polybar redshift menu
 rewrite vim config in lua
@@ -8,7 +6,4 @@ document: keybinds generation, general overview of scripts and inits used
 rewrite scripts with /bin/sh
 purge unused manually installed packages
 .z file (directory changer) in home dir
-update nvim to use inbuilt LSP instead of CoC
-replace build.sh files with Makefile
 spotify polybar module is broken with dwm-polybar
-sxhkd quick open not working sometimes
