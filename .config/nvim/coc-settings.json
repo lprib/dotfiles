@@ -3,6 +3,7 @@
 	"coc.preferences.formatOnSaveFiletypes": [
 		"json",
 		"c",
-		"cpp"
+		"cpp",
+		"rust"
 	]
 }

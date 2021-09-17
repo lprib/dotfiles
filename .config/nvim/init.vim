@@ -11,6 +11,9 @@ call plug#begin()
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
     Plug 'jackguo380/vim-lsp-cxx-highlight'
     Plug 'tikhomirov/vim-glsl'
+    Plug 'cespare/vim-toml'
+    Plug 'sophacles/vim-processing'
+    Plug 'rust-lang/rust.vim'
 
     " theming:
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -146,10 +149,10 @@ function! SetupCoc()
     " Applying codeAction to the selected region.
     " Example: `<leader>aap` for current paragraph
     xmap <leader>a  <Plug>(coc-codeaction-selected)
-    nmap <leader>a  <Plug>(coc-codeaction-selected)
+    " nmap <leader>a  <Plug>(coc-codeaction-selected)
 
     " Remap keys for applying codeAction to the current buffer.
-    nmap <leader>ac  <Plug>(coc-codeaction)
+    nmap <leader>ba  <Plug>(coc-codeaction)
     " Apply AutoFix to problem on the current line.
     nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -178,6 +181,30 @@ function! SetupCoc()
         autocmd!
         autocmd FileType tex noremap <leader>b :w \| call CocAction("runCommand", "latex.Build")<cr>
     augroup END
+
+    augroup rust_keybinds
+        autocmd!
+        autocmd FileType rust noremap <leader>ma :call CocAction('runCommand', 'rust-analyzer.expandMacro')<cr>
+        autocmd FileType rust noremap <leader>K :call CocAction('runCommand', 'rust-analyzer.openDocs')<cr>
+        autocmd FileType rust noremap <leader>t :call CocAction('runCommand', 'rust-analyzer.toggleInlayHints')<cr>
+    augroup END
+
+    " lightline integration
+    let g:lightline = {
+          \ 'colorscheme': 'wombat',
+          \ 'active': {
+          \   'left': [ [ 'mode', 'paste' ],
+          \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+          \ },
+          \ 'component_function': {
+          \   'cocstatus': 'coc#status',
+          \   'currentfunction': 'CocCurrentFunction'
+          \ },
+          \ }
+endfunction
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
 endfunction
 
 function! s:show_documentation()
