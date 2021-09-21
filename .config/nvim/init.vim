@@ -1,29 +1,34 @@
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin()
-    Plug 'rking/ag.vim'
-    Plug 'preservim/nerdcommenter'
-    Plug 'wincent/terminus'
-    Plug 'ludovicchabant/vim-lawrencium'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-sleuth'
-    Plug 'lervag/vimtex'
     Plug 'junegunn/fzf'
+    Plug 'preservim/nerdcommenter'
+    Plug 'tpope/vim-sleuth'
+    Plug 'rking/ag.vim', Cond(!exists('g:vscode'))
+    Plug 'wincent/terminus', Cond(!exists('g:vscode'))
+    Plug 'ludovicchabant/vim-lawrencium', Cond(!exists('g:vscode'))
+    Plug 'tpope/vim-fugitive', Cond(!exists('g:vscode'))
+    Plug 'lervag/vimtex', Cond(!exists('g:vscode'))
 
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
-    Plug 'tikhomirov/vim-glsl'
-    Plug 'cespare/vim-toml'
-    Plug 'sophacles/vim-processing'
-    Plug 'rust-lang/rust.vim'
+    Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(!exists('g:vscode'))
+    Plug 'tikhomirov/vim-glsl', Cond(!exists('g:vscode'))
+    Plug 'cespare/vim-toml', Cond(!exists('g:vscode'))
+    Plug 'sophacles/vim-processing', Cond(!exists('g:vscode'))
+    Plug 'rust-lang/rust.vim', Cond(!exists('g:vscode'))
 
     " theming:
-    Plug 'kyazdani42/nvim-web-devicons' " for file icons
-    Plug 'itchyny/lightline.vim'
-    Plug 'morhetz/gruvbox'
-    " Plug 'kien/rainbow_parentheses.vim'
+    Plug 'kyazdani42/nvim-web-devicons', Cond(!exists('g:vscode'))
+    Plug 'itchyny/lightline.vim', Cond(!exists('g:vscode'))
+    Plug 'morhetz/gruvbox', Cond(!exists('g:vscode'))
 
-    Plug 'junegunn/goyo.vim'
-    Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'junegunn/goyo.vim', Cond(!exists('g:vscode'))
+    Plug 'kyazdani42/nvim-tree.lua', Cond(!exists('g:vscode'))
 call plug#end()
+
 
 nnoremap <space> <Nop>
 let mapleader=" "
@@ -39,17 +44,7 @@ set scrolloff=2
 set inccommand=nosplit
 set whichwrap+=h,l
 
-" Make vim respect terminal transparency
-autocmd ColorScheme * hi Normal guibg=NONE ctermbg=None
 
-autocmd vimenter * ++nested colorscheme gruvbox
-
-" nvim-tree config:
-noremap <silent> <leader>1 :NvimTreeToggle<cr>
-let g:nvim_tree_auto_open = 1
-let g:nvim_tree_auto_close = 1
-let g:nvim_tree_follow = 1
-let g:nvim_tree_git_hl = 1
 
 " Carry over VSCode muscle memory
 noremap <c-s> :w<cr>
@@ -65,27 +60,34 @@ imap <c-H> <c-W>
 
 set ts=4 sw=0
 
-" enable parentheses coloring
-" autocmd vimenter * RainbowParenthesesToggle
-" autocmd Syntax * RainbowParenthesesLoadRound
-" autocmd Syntax * RainbowParenthesesLoadSquare
-" autocmd Syntax * RainbowParenthesesLoadBraces
+" Make vim respect terminal transparency
+autocmd ColorScheme * hi Normal guibg=NONE ctermbg=None
+autocmd vimenter * ++nested colorscheme gruvbox
 
-let g:NERDCreateDefaultMappings = 1
-let g:NERDSpaceDelims = 1
-" default to // for comments in c
-let g:NERDAltDelims_c = 1
-let g:NERDAltDelims_java = 1
+if !exists('g:vscode')
+    " nvim-tree config:
+    noremap <silent> <leader>1 :NvimTreeToggle<cr>
+    let g:nvim_tree_auto_open = 1
+    let g:nvim_tree_auto_close = 1
+    let g:nvim_tree_follow = 1
+    let g:nvim_tree_git_hl = 1
 
-noremap <silent> <leader>h :nohlsearch<cr>
+    let g:NERDCreateDefaultMappings = 1
+    let g:NERDSpaceDelims = 1
+    " default to // for comments in c
+    let g:NERDAltDelims_c = 1
+    let g:NERDAltDelims_java = 1
 
-noremap <silent> <c-p> :FZF -i<cr>
-let $FZF_DEFAULT_COMMAND = 'rg --files -g ""'
+    noremap <silent> <leader>h :nohlsearch<cr>
 
-let g:goyo_width = "95%"
-let g:goyo_height = "95%"
+    noremap <silent> <c-p> :FZF -i<cr>
+    let $FZF_DEFAULT_COMMAND = 'rg --files -g ""'
 
-noremap <silent> <leader>z :Goyo<cr>
+    let g:goyo_width = "95%"
+    let g:goyo_height = "95%"
+
+    noremap <silent> <leader>z :Goyo<cr>
+endif
 
 " recursively search for tags files
 set tags=./tag,tags;
@@ -222,14 +224,17 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-call SetupCoc()
+if !exists('g:vscode')
+    call SetupCoc()
 
-" import shortcuts file
-runtime shortcuts.vim
+    " import shortcuts file
+    runtime shortcuts.vim
 
-function! ShortcutEdit(filename)
-    execute "e " . g:my_shortcuts[a:filename]
-endfunction
+    function! ShortcutEdit(filename)
+        execute "e " . g:my_shortcuts[a:filename]
+    endfunction
 
-command! -nargs=1 C :call ShortcutEdit("<args>")
+    command! -nargs=1 C :call ShortcutEdit("<args>")
+endif
+
 
