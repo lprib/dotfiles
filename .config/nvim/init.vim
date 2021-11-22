@@ -15,8 +15,10 @@ call plug#begin()
     Plug 'morhetz/gruvbox'
     " Plug 'kien/rainbow_parentheses.vim'
 
+    Plug 'preservim/nerdtree'
+
     Plug 'junegunn/goyo.vim'
-    Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'dense-analysis/ale'
 call plug#end()
 
 nnoremap <space> <Nop>
@@ -24,6 +26,7 @@ let mapleader=" "
 
 set number relativenumber
 set splitright splitbelow showcmd noshowmode wildmenu lazyredraw incsearch
+set ignorecase smartcase
 set shortmess+=Ic
 set diffopt+=vertical
 set encoding=utf-8
@@ -32,15 +35,18 @@ set scrolloff=2
 set inccommand=nosplit
 set whichwrap+=h,l
 
+set bg=dark
 colorscheme gruvbox
+
+nnoremap <leader>rc :e ~/.config/nvim/init.vim<cr>
+
+" generate tags
+nnoremap <leader>tg :!ag -l \| ctags -L-
 
 " nvim-tree config:
 set termguicolors
-noremap <silent> <leader>1 :NvimTreeToggle<cr>
-let g:nvim_tree_auto_open = 1
-let g:nvim_tree_auto_close = 1
-let g:nvim_tree_follow = 1
-let g:nvim_tree_git_hl = 1
+
+noremap <silent> <leader>1 :NERDTreeToggle<cr>
 
 " Carry over VSCode muscle memory
 noremap <c-s> :w<cr>
