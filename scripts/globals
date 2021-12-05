@@ -23,3 +23,6 @@ export PATH=/home/liam/packages/idea-IU-212.5080.55/bin:$PATH
 
 export EDITOR=nvim
 
+# Enable anti-aliasing in AWT java apps
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+

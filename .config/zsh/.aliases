@@ -6,9 +6,9 @@ alias bash="bash --init-file $XDG_CONFIG_HOME/bash/.bashrc"
 alias cg="confgit"
 alias confgit="git --git-dir $HOME/.dotfilesgit --work-tree=$HOME"
 alias ec="editconf"
-alias htop="gotop"
+alias htop="btm"
 alias ls="exa -la --no-permissions --group-directories-first --no-user --no-time"
-alias tree="exa --tree"
+alias tree="exa --tree --icons"
 alias sudo="sudo " # allows use of aliases when using sudo
 alias vim="nvim"
 

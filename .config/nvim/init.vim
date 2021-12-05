@@ -43,6 +43,7 @@ set cmdheight=2
 set scrolloff=2
 set inccommand=nosplit
 set whichwrap+=h,l
+set clipboard=unnamedplus
 
 
 
