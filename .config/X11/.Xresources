@@ -1,5 +1,6 @@
 *monitorLeft: DVI-I-1
-*monitorRight: HDMI-0
+# *monitorRight: HDMI-0
+*monitorRight: DP-2
 
 Xcursor.size: 24
 

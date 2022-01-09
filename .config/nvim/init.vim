@@ -65,6 +65,8 @@ set ts=4 sw=0
 autocmd ColorScheme * hi Normal guibg=NONE ctermbg=None
 autocmd vimenter * ++nested colorscheme gruvbox
 
+noremap <silent> <leader>h :nohlsearch<cr>
+
 if !exists('g:vscode')
     " nvim-tree config:
     noremap <silent> <leader>1 :NvimTreeToggle<cr>
@@ -79,7 +81,6 @@ if !exists('g:vscode')
     let g:NERDAltDelims_c = 1
     let g:NERDAltDelims_java = 1
 
-    noremap <silent> <leader>h :nohlsearch<cr>
 
     noremap <silent> <c-p> :FZF -i<cr>
     let $FZF_DEFAULT_COMMAND = 'rg --files -g ""'

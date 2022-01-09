@@ -38,10 +38,11 @@ fi
 MONITOR_LEFT=$(xgetres monitorLeft)
 MONITOR_RIGHT=$(xgetres monitorRight)
 xrandr --output $MONITOR_RIGHT --auto --rotate normal --primary
-xrandr --output $MONITOR_LEFT --auto --left-of $MONITOR_RIGHT --rotate right
+# xrandr --output $MONITOR_LEFT --auto --left-of $MONITOR_RIGHT --rotate right
+xrandr --output $MONITOR_LEFT --auto --left-of $MONITOR_RIGHT --rotate right --rate 165
 
 xwallpaper --zoom $HOME/.config/wall.png
-xcompmgr &
+picom &
 sxhkd &
 
 setxkbmap -option caps:swapescape
