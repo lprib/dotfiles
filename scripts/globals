@@ -26,3 +26,4 @@ export EDITOR=nvim
 # Enable anti-aliasing in AWT java apps
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
+export MOZ_USE_XINPUT2=1
