@@ -31,6 +31,9 @@ set inccommand=nosplit
 set whichwrap+=h,l
 set clipboard+=unnamedplus
 set updatetime=100
+set nuw=5
+
+
 
 " syntax on
 colorscheme onedark
@@ -52,12 +55,21 @@ noremap <silent> <leader>d :SignifyHunkDiff<cr>
 noremap <silent> <leader>ud :SignifyHunkUndo<cr>
 " full diff:
 noremap <silent> <leader>D :SignifyDiff<cr>
+let g:signify_sign_change_delete = '-'
 
 " Carry over VSCode muscle memory
 noremap <c-s> :w<cr>
 nmap <c-_> <leader>c<space>
 vmap <c-_> <leader>c<space>gv
 nmap <c-a> ggVG
+
+" make pasting not overwrite copy register
+xnoremap p pgvy
+
+" <leader>pa copies path to clipboard
+" <leader>pf copies full path to clipboard
+nmap <leader>pa :let @+=expand("%")<cr>
+nmap <leader>pf :let @+=expand("%:p")<cr>
 
 map Y y$
 nmap \ <c-^>
@@ -85,13 +97,29 @@ augroup quickfix
 	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 
-" quick search
-nnoremap <leader>s "syiw:Grep -s <c-r>s<cr>
-vnoremap <leader>s "sy:Grep -s <c-r>s<cr>
+" search (loc list by default)
+nnoremap <leader>s "syiw:LGrep -s <c-r>s<cr>
+vnoremap <leader>s "sy:LGrep -s <c-r>s<cr>
 
-"quickfix jumping
-nnoremap ) :cn<cr>
-nnoremap ( :cp<cr>
+" quickfix search
+nnoremap <leader>qs "syiw:Grep -s <c-r>s<cr>
+vnoremap <leader>qs "sy:Grep -s <c-r>s<cr>
+
+" C file search (loc list)
+nnoremap <leader>cs "syiw:LGrep --cc -s <c-r>s<cr>
+vnoremap <leader>cs "sy:LGrep --cc -s <c-r>s<cr>
+
+" quickfix C search
+nnoremap <leader>qcs "syiw:Grep --cc -s <c-r>s<cr>
+vnoremap <leader>qcs "sy:Grep --cc -s <c-r>s<cr>
+
+"location list jumping
+nnoremap ) :lnext<cr>
+nnoremap ( :lprev<cr>
+
+
+nnoremap g) :cn<cr>
+nnoremap g( :cp<cr>
 
 " set ts=4 sw=0
 
@@ -101,7 +129,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDAltDelims_c = 1
 let g:NERDAltDelims_java = 1
 
-noremap <silent> <leader>h :nohl<cr>:ccl<cr>
+noremap <silent> <leader>h :nohl<cr>:ccl<cr>:lcl<cr>
 
 " Easy align bindings
 xmap ga <Plug>(EasyAlign)
