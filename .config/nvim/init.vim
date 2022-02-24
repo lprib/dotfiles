@@ -123,7 +123,7 @@ nnoremap g( :cp<cr>
 
 " set ts=4 sw=0
 
-let g:NERDCreateDefaultMappings = 1
+let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 " default to // for comments in c
 let g:NERDAltDelims_c = 1
