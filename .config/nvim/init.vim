@@ -4,7 +4,6 @@ call plug#begin()
     Plug 'mhinz/vim-signify'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-sleuth'
-    Plug 'lervag/vimtex'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/vim-easy-align'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -19,6 +18,7 @@ call plug#end()
 nnoremap <space> <Nop>
 let mapleader=" "
 
+filetype plugin on 
 set number relativenumber
 set splitright splitbelow showcmd noshowmode wildmenu lazyredraw incsearch
 set ignorecase smartcase
@@ -59,8 +59,10 @@ let g:signify_sign_change_delete = '-'
 
 " Carry over VSCode muscle memory
 noremap <c-s> :w<cr>
-nmap <c-_> <leader>c<space>
-vmap <c-_> <leader>c<space>gv
+nmap <c-_> <Plug>NERDCommenterToggle
+vmap <c-_> <Plug>NERDCommenterToggle
+nmap g<c-_> <Plug>NERDCommenterAltDelims
+vmap g<c-_> <Plug>NERDCommenterAltDelims
 nmap <c-a> ggVG
 
 " make pasting not overwrite copy register
