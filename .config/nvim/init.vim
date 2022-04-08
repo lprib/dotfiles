@@ -7,6 +7,7 @@ call plug#begin()
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/vim-easy-align'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'brooth/far.vim'
 
     " theming:
     Plug 'itchyny/lightline.vim'
@@ -119,10 +120,12 @@ vnoremap <leader>qcs "sy:Grep --cc -s <c-r>s<cr>
 nnoremap ) :lnext<cr>
 nnoremap ( :lprev<cr>
 
-
 nnoremap g) :cn<cr>
 nnoremap g( :cp<cr>
 
+" ctag match jumping
+nnoremap ]] :tn<cr>
+nnoremap [[ :tp<cr>
 " set ts=4 sw=0
 
 let g:NERDCreateDefaultMappings = 0
