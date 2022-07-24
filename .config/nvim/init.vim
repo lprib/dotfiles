@@ -1,7 +1,6 @@
 call plug#begin()
     Plug 'preservim/nerdcommenter'
     Plug 'wincent/terminus'
-    Plug 'mhinz/vim-signify'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-sleuth'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -12,6 +11,7 @@ call plug#begin()
     " theming:
     Plug 'itchyny/lightline.vim'
     Plug 'joshdick/onedark.vim'
+    Plug 'lifepillar/vim-solarized8'
 
     Plug 'preservim/nerdtree'
 call plug#end()
@@ -37,12 +37,13 @@ set nuw=5
 
 
 " syntax on
-colorscheme onedark
+colorscheme solarized8
 
 nnoremap <leader>rc :e ~/.config/nvim/init.vim<cr>
 
 " generate tags
-nnoremap <leader>tg :!ag -l \| ctags -L-
+" nnoremap <leader>tg :!ag -l \| ctags -L-
+nnoremap <leader>tg :!TaitTerm_Build/makeTags
 
 " nvim-tree config:
 set termguicolors
@@ -154,10 +155,16 @@ autocmd! BufWritePost init.vim source % | echo "Sourced" expand("%")
 
 " TaitTerminals codebase specifics:
 autocmd FileType c,cpp,d,xslt,xml,ruby,sh,python,javascript,html,json,groovy,asm,dot,yaml,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
-autocmd FileType c,cpp,d,xslt,xml,ruby,sh,python,javascript,html,json,groovy,dot,yaml,markdown,css set sw=3 sts=3 et sta sr ai si cin cino=>1s(0u0W1s tw=0
+autocmd FileType c,cpp,d,xslt,xml,ruby,sh,python,javascript,html,json,groovy,dot,yaml,css set sw=3 sts=3 et sta sr ai si cin cino=>1s(0u0W1s tw=0
+
+" No C indenting in markdown, it fucks with parenthesis indent
+autocmd FileType c,cpp,d,xslt,xml,ruby,sh,python,javascript,html,json,groovy,dot,yaml,markdown,css set sw=3 sts=3 et sta sr ai si tw=0
 let g:vhdl_indent_genportmap=0
 set errorformat^=%*[^:].o:%f:%l:\ %m
 set vb
+
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
 
 " Break out of terminal with escape
 tnoremap <esc> <c-\><c-n>
