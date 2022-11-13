@@ -3,12 +3,13 @@ call plug#begin()
     Plug 'wincent/terminus'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-sleuth'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/vim-easy-align'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'brooth/far.vim'
+    Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 
     " theming:
+    Plug 'kyazdani42/nvim-web-devicons'
     Plug 'itchyny/lightline.vim'
     Plug 'joshdick/onedark.vim'
     Plug 'lifepillar/vim-solarized8'
@@ -35,11 +36,10 @@ set updatetime=100
 set nuw=5
 
 
-
 " syntax on
 colorscheme solarized8
 
-nnoremap <leader>rc :e ~/.config/nvim/init.vim<cr>
+nnoremap <leader>rc :tabe ~/.config/nvim/init.vim<cr>
 
 " generate tags
 " nnoremap <leader>tg :!ag -l \| ctags -L-
@@ -75,12 +75,30 @@ xnoremap p pgvy
 nmap <leader>pa :let @+=expand("%")<cr>
 nmap <leader>pf :let @+=expand("%:p")<cr>
 
+nmap <silent> <leader>f :!clang-format -i %<cr>
+vmap <silent> <leader>f :!clang-format<cr>
+
 map Y y$
 nmap \ <c-^>
 
 " Control backspace deletes word in insert mode:
 imap <c-H> <c-W>
 
+" FZF
+lua <<EOF
+require'fzf-lua'.setup {
+  winopts = {
+    width = 0.95,
+    height = 0.95,
+    preview = {
+      layout = "vertical",
+    },
+  },
+}
+EOF
+
+nnoremap <c-p> <cmd>lua require('fzf-lua').files({cmd = "ag -l"})<CR>
+nnoremap <c-q> <cmd>lua require('fzf-lua').loclist()<CR>
 
 " Custom Grep command:
 set grepprg=ag\ --vimgrep
@@ -94,6 +112,8 @@ command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
 
 cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
 cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
+
+nnoremap <c-l> :LGrep --cc --cpp 
 
 augroup quickfix
 	autocmd!
@@ -110,12 +130,12 @@ nnoremap <leader>qs "syiw:Grep -s <c-r>s<cr>
 vnoremap <leader>qs "sy:Grep -s <c-r>s<cr>
 
 " C file search (loc list)
-nnoremap <leader>cs "syiw:LGrep --cc -s <c-r>s<cr>
-vnoremap <leader>cs "sy:LGrep --cc -s <c-r>s<cr>
+nnoremap <leader>cs "syiw:LGrep --cc --cpp -s <c-r>s<cr>
+vnoremap <leader>cs "sy:LGrep --cc --cpp -s <c-r>s<cr>
 
 " quickfix C search
-nnoremap <leader>qcs "syiw:Grep --cc -s <c-r>s<cr>
-vnoremap <leader>qcs "sy:Grep --cc -s <c-r>s<cr>
+nnoremap <leader>qcs "syiw:Grep --cc --cpp -s <c-r>s<cr>
+vnoremap <leader>qcs "sy:Grep --cc --cpp -s <c-r>s<cr>
 
 "location list jumping
 nnoremap ) :lnext<cr>
@@ -140,13 +160,6 @@ noremap <silent> <leader>h :nohl<cr>:ccl<cr>:lcl<cr>
 " Easy align bindings
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-noremap <silent> <c-p> :FZF -i<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -l'
-let g:fzf_tags_command = 'ctags -R'
-
-let g:goyo_width = "95%"
-let g:goyo_height = "95%"
 
 " recursively search for tags files
 set tags=./tag,tags;
@@ -173,7 +186,7 @@ tnoremap <esc> <c-\><c-n>
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
+  ensure_installed = {"c", "bash", "c_sharp", "cpp", "dot", "html", "javascript", "json", "lua", "make", "markdown", "python", "regex", "rust", "toml", "vim", "yaml"},
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
