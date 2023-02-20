@@ -1,18 +1,16 @@
 call plug#begin()
     Plug 'preservim/nerdcommenter'
     Plug 'wincent/terminus'
-    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-sleuth'
     Plug 'junegunn/vim-easy-align'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'brooth/far.vim'
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+    Plug 'sukima/xmledit'
 
     " theming:
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'itchyny/lightline.vim'
-    Plug 'joshdick/onedark.vim'
-    Plug 'lifepillar/vim-solarized8'
+    Plug 'morhetz/gruvbox'
 
     Plug 'preservim/nerdtree'
 call plug#end()
@@ -37,7 +35,9 @@ set nuw=5
 
 
 " syntax on
-colorscheme solarized8
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_light = 'soft'
+colorscheme gruvbox
 
 nnoremap <leader>rc :tabe ~/.config/nvim/init.vim<cr>
 
@@ -61,10 +61,10 @@ let g:signify_sign_change_delete = '-'
 
 " Carry over VSCode muscle memory
 noremap <c-s> :w<cr>
-nmap <c-_> <Plug>NERDCommenterToggle
-vmap <c-_> <Plug>NERDCommenterToggle
-nmap g<c-_> <Plug>NERDCommenterAltDelims
-vmap g<c-_> <Plug>NERDCommenterAltDelims
+nmap <c-/> <Plug>NERDCommenterToggle
+vmap <c-/> <Plug>NERDCommenterToggle
+nmap g<c-/> <Plug>NERDCommenterAltDelims
+vmap g<c-/> <Plug>NERDCommenterAltDelims
 nmap <c-a> ggVG
 
 " make pasting not overwrite copy register
