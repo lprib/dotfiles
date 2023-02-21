@@ -37,6 +37,10 @@ set nuw=5
 " syntax on
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'soft'
+
+" nvim-tree config:
+set termguicolors
+
 colorscheme gruvbox
 
 nnoremap <leader>rc :tabe ~/.config/nvim/init.vim<cr>
@@ -44,9 +48,6 @@ nnoremap <leader>rc :tabe ~/.config/nvim/init.vim<cr>
 " generate tags
 " nnoremap <leader>tg :!ag -l \| ctags -L-
 nnoremap <leader>tg :!TaitTerm_Build/makeTags
-
-" nvim-tree config:
-set termguicolors
 
 noremap <silent> <leader>1 :NERDTreeToggle<cr>
 
@@ -72,8 +73,10 @@ xnoremap p pgvy
 
 " <leader>pa copies path to clipboard
 " <leader>pf copies full path to clipboard
+" <leader>pb copies filename only to clipboard
 nmap <leader>pa :let @+=expand("%")<cr>
 nmap <leader>pf :let @+=expand("%:p")<cr>
+nmap <leader>pb :let @+=expand("%:t")<cr>
 
 nmap <silent> <leader>f :!clang-format -i %<cr>
 vmap <silent> <leader>f :!clang-format<cr>
@@ -88,7 +91,7 @@ imap <c-H> <c-W>
 lua <<EOF
 require'fzf-lua'.setup {
   winopts = {
-    width = 0.95,
+    width = 0.80,
     height = 0.95,
     preview = {
       layout = "vertical",
@@ -97,7 +100,7 @@ require'fzf-lua'.setup {
 }
 EOF
 
-nnoremap <c-p> <cmd>lua require('fzf-lua').files({cmd = "ag -l"})<CR>
+nnoremap <c-p> <cmd>lua require('fzf-lua').files({cmd = "ag -l", fzf_opts = { ["--delimiter"] = "/", ["--nth"] = "-1", ["--with-nth"] = "2..", ["--tiebreak"] = "end" }})<CR>
 nnoremap <c-q> <cmd>lua require('fzf-lua').loclist()<CR>
 
 " Custom Grep command:
@@ -113,7 +116,7 @@ command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
 cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
 cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
 
-nnoremap <c-l> :LGrep --cc --cpp 
+nnoremap <c-l> :LGrep 
 
 augroup quickfix
 	autocmd!
@@ -163,8 +166,6 @@ nmap ga <Plug>(EasyAlign)
 
 " recursively search for tags files
 set tags=./tag,tags;
-
-autocmd! BufWritePost init.vim source % | echo "Sourced" expand("%")
 
 " TaitTerminals codebase specifics:
 autocmd FileType c,cpp,d,xslt,xml,ruby,sh,python,javascript,html,json,groovy,asm,dot,yaml,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
