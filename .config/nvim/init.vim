@@ -71,15 +71,15 @@ nmap <c-a> ggVG
 " make pasting not overwrite copy register
 xnoremap p pgvy
 
-" <leader>pa copies path to clipboard
-" <leader>pf copies full path to clipboard
-" <leader>pb copies filename only to clipboard
+" <leader>pa copies working-dir-relative path to clipboard - "PAth"
+" <leader>pf copies full path to clipboard - "Path Full"
+" <leader>pb copies filename only to clipboard - "Path Base"
 nmap <leader>pa :let @+=expand("%")<cr>
 nmap <leader>pf :let @+=expand("%:p")<cr>
 nmap <leader>pb :let @+=expand("%:t")<cr>
 
-nmap <silent> <leader>f :!clang-format -i %<cr>
-vmap <silent> <leader>f :!clang-format<cr>
+nmap <silent> <leader>f :!clang-format --style=file:/home/pribisl/projects/firmware-clang-format -i %<cr>
+vmap <silent> <leader>f :!clang-format --style=file:/home/pribisl/projects/firmware-clang-format<cr>
 
 map Y y$
 nmap \ <c-^>
@@ -100,7 +100,7 @@ require'fzf-lua'.setup {
 }
 EOF
 
-nnoremap <c-p> <cmd>lua require('fzf-lua').files({cmd = "ag -l", fzf_opts = { ["--delimiter"] = "/", ["--nth"] = "-1", ["--with-nth"] = "2..", ["--tiebreak"] = "end" }})<CR>
+nnoremap <c-p> <cmd>lua require('fzf-lua').files({cmd = "ag -l", fzf_opts = { ["--delimiter"] = "/", ["--tiebreak"] = "end" }})<CR>
 nnoremap <c-q> <cmd>lua require('fzf-lua').loclist()<CR>
 
 " Custom Grep command:
